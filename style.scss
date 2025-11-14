@@ -11,6 +11,13 @@ body {
   height: 100%;
   width: 100%;
 }
+
+@mixin flex-div() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 main {
   background-color: black;
   width: 100%;
@@ -18,53 +25,34 @@ main {
   div#container {
     width: 100%;
     height: 100%;
-    display: flex;
+    @include flex-div();
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    gap: 5rem;
     div#inner-container {
       width: 100%;
       height: 30%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-div();
       gap: 2rem;
-      #minus-div {
-        background: linear-gradient(#bd3039);
-        height: 200px;
-        width: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 15px;
-        h2 {
-          font-size: 100px;
-        }
-      }
       #number-div {
         background-color: rgb(255, 255, 255);
-        border: 10px solid #bd3039;
-        height: 500px;
-        width: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border: 0.8rem solid #bd3039;
+        height: 350px;
+        width: 350px;
+        @include flex-div();
         border-radius: 100%;
         h2 {
-          font-size: 100px;
+          font-size: 10rem;
         }
       }
+      #minus-div,
       #plus-div {
         background: linear-gradient(#bd3039);
-        height: 200px;
-        width: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 15px;
+        height: 150px;
+        width: 150px;
+        @include flex-div();
+        border-radius: 1rem;
         h2 {
-          font-size: 100px;
+          font-size: 7rem;
         }
       }
 
@@ -75,14 +63,40 @@ main {
       }
     }
     button {
-      font-size: 50px;
+      font-size: 3rem;
       border: none;
       padding: 1rem 10rem;
-      border-radius: 50px;
+      border-radius: 3rem;
       background: linear-gradient(#bd3039);
     }
     button:hover {
       background: rgb(255, 157, 157);
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  main {
+    div#container {
+      div#inner-container {
+        flex-direction: column;
+        #number-div {
+          height: 200px;
+          width: 200px;
+          h2 {
+            font-size: 10rem;
+          }
+        }
+        #minus-div,
+        #plus-div {
+          height: 100px;
+          width: 100px;
+        }
+      }
+      button {
+        margin-top: 2rem;
+        padding: 0.5rem 2rem;
+        font-size: 1.5rem;
+      }
     }
   }
 }
